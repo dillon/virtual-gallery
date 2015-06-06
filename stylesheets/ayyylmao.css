@@ -1,5 +1,31 @@
 @charset "UTF-8";
 body {
-    font-family: Helvetica Neue, Helvetica, sans-serif;
+    font-family:"Courier New", monospace;
+    padding-top: 100px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    position:relative;
+	margin: 0 auto;
+    text-align: center;
+
+}
+
+a {
+    text-decoration:none;
+}
+
+.one:hover a span.new-label span {
+  display: none;
+}
+.one:hover a span.new-label:after {
+  content: 'resume';
+}
+
+.two:hover a span.new-label span {
+  display: none;
+}
+.two:hover a span.new-label:after {
+  content: 'painting';
 }
 
