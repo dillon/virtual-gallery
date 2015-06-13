@@ -26,6 +26,6 @@ a {
   display: none;
 }
 .two:hover a span.new-label:after {
-  content: 'painting';
+  content: 'more';
 }
 
