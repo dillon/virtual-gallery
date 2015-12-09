@@ -9,10 +9,51 @@ function draw() {
   //camera
   perspective(60 / 180 * PI, width / height, .1, 100)
 
+  //primitive objects
+  translate(-250 * 2.5, 0, 0);
   normalMaterial();
-  translate(0, 0, 0);
-  box(30, 30, 30);
-  rotateX(accelerationY * 0.05);
-  rotateY(accelerationX * 0.05);
-  rotateZ(accelerationZ * 0.05);
+  push();
+  rotateZ(frameCount * 0.01);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  plane(80);
+  pop();
+  translate(250, 0, 0);
+  push();
+  rotateZ(frameCount * 0.01);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  box(80, 80, 80);
+  pop();
+  translate(250, 0, 0);
+  push();
+  rotateZ(frameCount * 0.01);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  cylinder(80, 80);
+  pop();
+
+  translate(250, 0, 0);
+  push();
+  rotateZ(accelerationZ * 0.01);
+  rotateX(accelerationY * 0.01);
+  rotateY(accelerationX * 0.01);
+  cone(80, 80);
+  pop();
+  translate(250, 0, 0);
+  push();
+  rotateZ(frameCount * 0.01);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  torus(80, 20);
+  pop();
+  translate(250, 0, 0);
+  push();
+  rotateZ(frameCount * 0.01);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  sphere(80);
+  pop();
+
+
 }
