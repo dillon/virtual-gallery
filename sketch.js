@@ -8,12 +8,10 @@ function draw() {
   var radius = width * 1.5;
   //camera
   perspective(60 / 180 * PI, width / height, .1, 100)
-  rotateX(accelerationY);
-  //rotateY(accelerationX * 0.05);
-  //rotateZ(accelerationZ * 0.05);
 
   normalMaterial();
   translate(0, 0, 0);
+  
   for (var i = 0; i <= 12; i++) {
     for (var j = 0; j <= 12; j++) {
       push();
@@ -28,4 +26,7 @@ function draw() {
       pop();
     }
   }
+  rotateX(accelerationY * 0.05);
+  rotateY(accelerationX * 0.05);
+  rotateZ(accelerationZ * 0.05);
 }
