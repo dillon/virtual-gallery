@@ -11,21 +11,7 @@ function draw() {
 
   normalMaterial();
   translate(0, 0, 0);
-  
-  for (var i = 0; i <= 12; i++) {
-    for (var j = 0; j <= 12; j++) {
-      push();
-      var a = j / 12 * PI;
-      var b = i / 12 * PI;
-      translate(sin(2 * a) * radius * sin(b), cos(b) * radius / 2, cos(2 * a) * radius * sin(b));
-      if (j % 2 === 0) {
-        cone(30, 30);
-      } else {
-        box(30, 30, 30);
-      }
-      pop();
-    }
-  }
+  box(30, 30, 30);
   rotateX(accelerationY * 0.05);
   rotateY(accelerationX * 0.05);
   rotateZ(accelerationZ * 0.05);
