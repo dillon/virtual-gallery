@@ -1,19 +1,32 @@
-// Jiashan Wu
-// https://github.com/OhJia/p5MobileWebExamples
+function setup() {
+  createCanvas(710, 400, WEBGL);
 
-
-function setup(){
-  createCanvas(windowWidth, windowHeight, 'webgl');
 }
 
-function draw(){
-  background(255, 255, 255, 255);
+function draw() {
+  background(250);
+  var radius = width * 1.5;
+  //camera
+  perspective(60 / 180 * PI, width / height, .1, 100)
+  orbitControl();
+  rotateY(accelerationX * 0.05);
+  rotateX(accelerationY * 0.05);
+  rotateZ(accelerationZ * 0.05);
 
-  translate(-width/2, 0, -600);
-  
   normalMaterial();
-  rotateX(accelerationX * 0.05);
-  rotateY(accelerationY * 0.05);
-  box(80, 80, 180);
-
+  translate(0, 0, 0);
+  for (var i = 0; i <= 12; i++) {
+    for (var j = 0; j <= 12; j++) {
+      push();
+      var a = j / 12 * PI;
+      var b = i / 12 * PI;
+      translate(sin(2 * a) * radius * sin(b), cos(b) * radius / 2, cos(2 * a) * radius * sin(b));
+      if (j % 2 === 0) {
+        cone(30, 30);
+      } else {
+        box(30, 30, 30);
+      }
+      pop();
+    }
+  }
 }
