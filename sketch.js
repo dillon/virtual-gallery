@@ -8,8 +8,8 @@ function draw() {
   var radius = width * 1.5;
   //camera
   perspective(60 / 180 * PI, width / height, .1, 100)
-  rotateY(accelerationX * 0.05);
   rotateX(accelerationY * 0.05);
+  //rotateY(accelerationX * 0.05);
   //rotateZ(accelerationZ * 0.05);
 
   normalMaterial();
