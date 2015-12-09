@@ -35,7 +35,6 @@
   <div id="container"></div>
 
   <div id="info">
-    <a href="http://threejs.org" target="_blank">three.js</a> - equirectangular panorama demo with DeviceOrientation controls. photo by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank">Jón Ragnarsson</a>.
   </div>
 
   <script src="js/three.min.js"></script>
@@ -70,7 +69,7 @@
         geometry.scale(-1, 1, 1);
 
         var material = new THREE.MeshBasicMaterial({
-          map: THREE.ImageUtils.loadTexture('textures/2294472375_24a3b8ef46_o.jpg')
+          map: THREE.ImageUtils.loadTexture('images/equi.jpg')
         });
 
         var mesh = new THREE.Mesh(geometry, material);
