@@ -35,9 +35,9 @@ function draw() {
 
   translate(250, 0, 0);
   push();
-  rotateZ(accelerationZ * 0.01);
-  rotateX(accelerationY * 0.01);
-  rotateY(accelerationX * 0.01);
+  rotateZ(accelerationZ, 90);
+  //rotateX(accelerationY * 0.01);
+  //rotateY(accelerationX * 0.01);
   cone(80, 80);
   pop();
   translate(250, 0, 0);
