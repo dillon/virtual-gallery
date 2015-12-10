@@ -107,23 +107,8 @@
         controls = new THREE.DeviceOrientationControls(camera);
 
         scene = new THREE.Scene();
-        
-        
-        
-        
 
-        var a = new THREE.Vector3(100, 0, 0);
-        var b = new THREE.Vector3( 0, 50, 0 );
-        var c = new THREE.Vector3();
-        var geomoetry = c.crossVectors( a, b );
-        var material = new THREE.MeshBasicMaterial({
-          color: 0xFF00FF,
-        });
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-        
-/*
-        //sphere idk what this does
+//sphere idk what this does
         var geometry = new THREE.SphereGeometry(100, 100, 1);
 
         var material = new THREE.MeshBasicMaterial({
@@ -142,9 +127,9 @@
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
-        
 
-        //another thing idk?
+
+//another thing idk?
         var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
@@ -155,7 +140,7 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-/*
+
 
 
         // GROUND
