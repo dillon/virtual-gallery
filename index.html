@@ -108,12 +108,20 @@
 
         scene = new THREE.Scene();
         
-        var a = new THREE.Vector3( 1, 0, 0 );
-var b = new THREE.Vector3( 0, 1, 0 );
+        
+        
+        
 
-var c = new THREE.Vector3();
-c.crossVectors( a, b );
-
+        var a = new THREE.Vector3(100, 0, 0);
+        var b = new THREE.Vector3( 0, 50, 0 );
+        var geometry = new THREE.Vector3();
+        c.crossVectors( a, b );
+        var material = new THREE.MeshBasicMaterial({
+          color: 0xFF00FF,
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+        
 /*
         //sphere idk what this does
         var geometry = new THREE.SphereGeometry(100, 100, 1);
