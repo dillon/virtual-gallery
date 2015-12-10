@@ -50,6 +50,16 @@
       //parse stuff
       Parse.initialize("nFKDmrlJEfyeEjTt4SMBhglHlKrFD0Wv61MAiMpj", "0ugDUNgUmflEHjINRTEMg68SfXX1NDJ9QN9MVd80");
 
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+      testObject.save({foo: "bar"}, {
+      success: function(object) {
+        $(".success").show();
+      },
+      error: function(model, error) {
+        $(".error").show();
+      }
+    });
 
 //start parse 2 (users)
 var user = new Parse.User();
