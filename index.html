@@ -107,7 +107,15 @@
         controls = new THREE.DeviceOrientationControls(camera);
 
         scene = new THREE.Scene();
+        
+        var a = new THREE.Vector3( 1, 0, 0 );
+var b = new THREE.Vector3( 0, 1, 0 );
 
+var c = new THREE.Vector3();
+c.crossVectors( a, b );
+
+/*
+        //sphere idk what this does
         var geometry = new THREE.SphereGeometry(100, 100, 1);
 
         var material = new THREE.MeshBasicMaterial({
@@ -117,17 +125,18 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
+        //box you're in
         var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
           side: THREE.BackSide,
-          wireframe: true //changed from true
+          wireframe: true //disable to make it walls
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
+        
 
-
-
+        //another thing idk?
         var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
@@ -138,21 +147,25 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
+/*
 
 
+        // GROUND
 
-				// GROUND
+        var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
+        var groundMat = new THREE.MeshPhongMaterial({
+          color: 0xffffff,
+          specular: 0x050505
+        });
+        groundMat.color.setHSL(0.095, 1, 0.75);
 
-				var groundGeo = new THREE.PlaneBufferGeometry( 10000, 10000 );
-				var groundMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x050505 } );
-				groundMat.color.setHSL( 0.095, 1, 0.75 );
+        var ground = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -33;
+        scene.add(ground);
+        wireframe: true //disable later
 
-				var ground = new THREE.Mesh( groundGeo, groundMat );
-				ground.rotation.x = -Math.PI/2;
-				ground.position.y = -33;
-				scene.add( ground );
-
-				ground.receiveShadow = true;
+        ground.receiveShadow = true;
 
 
 
