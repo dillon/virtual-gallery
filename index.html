@@ -124,19 +124,19 @@
           }
         );
         /*
-                //sphere idk what this does
-                var geometry = new THREE.SphereGeometry(100, 100, 1);
+        //sphere idk what this does
+        var geometry = new THREE.SphereGeometry(100, 100, 1);
 
-                var material = new THREE.MeshBasicMaterial({
-                  map: THREE.ImageUtils.loadTexture('images/equi.jpg')
-                });
+        var material = new THREE.MeshBasicMaterial({
+          map: THREE.ImageUtils.loadTexture('images/equi.jpg')
+        });
 
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
         */
 
-        
-        
+
+
         //box floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
         geometry.translate(50, 50, 0); // three.js r.72
@@ -148,19 +148,19 @@
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
-/*
-                        //another thing idk?
-                        var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
-                        var material = new THREE.MeshBasicMaterial({
-                          color: 0xFFFFFF,
-                          side: THREE.BackSide,
-                          wireframe: true
-                        });
+        /*
+       //another thing idk?
+      var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
+      var material = new THREE.MeshBasicMaterial({
+      color: 0xFFFFFF,
+      side: THREE.BackSide,
+      wireframe: true
+      });
 
-                        var mesh = new THREE.Mesh(geometry, material);
-                        scene.add(mesh);
+    var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-                */
+*/
 
 
         // GROUND
