@@ -47,41 +47,6 @@
   <script>
     (function() {
       "use strict";
-      //parse stuff
-      Parse.initialize("nFKDmrlJEfyeEjTt4SMBhglHlKrFD0Wv61MAiMpj", "0ugDUNgUmflEHjINRTEMg68SfXX1NDJ9QN9MVd80");
-
-      var TestObject = Parse.Object.extend("TestObject");
-      var testObject = new TestObject();
-      testObject.save({
-        foo: "bar"
-      }, {
-        success: function(object) {
-          $(".success").show();
-        },
-        error: function(model, error) {
-          $(".error").show();
-        }
-      });
-
-      //start parse 2 (users)
-      var user = new Parse.User();
-      user.set("username", "my name" + random(1000000));
-      user.set("password", "my pass" + random(1000000));
-
-      // other fields can be set just like with Parse.Object
- 
-      user.signUp(null, {
-        success: function(user) {
-          // Hooray! Let them use the app now.
-        },
-        error: function(user, error) {
-          // Show the error message somewhere and let the user try again.
-          alert("Error: " + error.code + " " + error.message);
-        }
-      });
-
-
-      //end parse 2
 
       var dimensions = {
         // What type of news is this? 
