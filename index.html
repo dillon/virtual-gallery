@@ -120,13 +120,14 @@
         */
         //box you're in
         var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
+                geometry.translate( 200, 200, 0 ); // three.js r.72
+
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
           side: THREE.BackSide,
           wireframe: true //disable to make it walls
         });
         var mesh = new THREE.Mesh(geometry, material);
-        geometry.translate( 200, 200, 0 ); // three.js r.72
         scene.add(mesh);
 
         /*
