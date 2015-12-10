@@ -89,7 +89,7 @@
       "use strict";
       window.addEventListener('load', function() {
 
-        var container, camera, scene, renderer, controls, geometry, mesh, dirLight, hemiLight, walls, ;
+        var container, camera, scene, renderer, controls, geometry, mesh, dirLight, hemiLight;
 
         var animate = function() {
 
@@ -118,7 +118,7 @@
                 var mesh = new THREE.Mesh(geometry, material);
                 scene.add(mesh);
         */
-        /*//box you're in
+        //box you're in
         var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
@@ -126,72 +126,25 @@
           wireframe: true //disable to make it walls
         });
         var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);*/
+        geometry.translate( 200, 200, 0 ); // three.js r.72
+        scene.add(mesh);
+
         /*
+                        //another thing idk?
+                        var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
+                        var material = new THREE.MeshBasicMaterial({
+                          color: 0xFFFFFF,
+                          side: THREE.BackSide,
+                          wireframe: true
+                        });
 
-                //another thing idk?
-                var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
-                var material = new THREE.MeshBasicMaterial({
-                  color: 0xFFFFFF,
-                  side: THREE.BackSide,
-                  wireframe: true
-                });
+                        var mesh = new THREE.Mesh(geometry, material);
+                        scene.add(mesh);
 
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
-
-        */
-
-        //WALLS
-
-        walls = new THREE.Object3D();
+                */
 
 
-        //	var groundMat = new THREE.MeshPhongMaterial({ambient:0xffffff, color:0xff33ff, specular: 0x000011});
-        //	var groundGeo = new THREE.PlaneGeometry(wallWidth, wallWidth);
-
-        var wallTexture = new THREE.MeshBasicMaterial({
-          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
-        });
-        wallTexture.map.needsUpdate = true;
-        //	var floorTexture = new THREE.MeshBasicMaterial({
-        //		map:THREE.ImageUtils.loadTexture('textures/walls/floor.jpg')
-        //		});
-        //	floorTexture.map.needsUpdate = true;
-
-        //	var ground = new THREE.Mesh(groundGeo, floorTexture);
-        //		ground.overdraw = true;
-        //		ground.position.set(0, -wallWidth, 0);
-        //		ground.rotation.x = -Math.PI/2;
-        //		walls.add(ground);
-
-        var wallleft = new THREE.Mesh(groundGeo, wallTexture);
-        wallleft.overdraw = true;
-        wallleft.position.set(-wallWidth / 2, -wallWidth / 2, 0);
-        wallleft.rotation.y = Math.PI / 2;
-        walls.add(wallleft);
-
-        var wallright = new THREE.Mesh(groundGeo, wallTexture);
-        wallright.overdraw = true;
-        wallright.position.set(wallWidth / 2, -wallWidth / 2, 0);
-        wallright.rotation.y = -Math.PI / 2;
-        walls.add(wallright);
-
-        var wallback = new THREE.Mesh(groundGeo, wallTexture);
-        wallback.overdraw = true;
-        wallback.position.set(0, -wallWidth / 2, -wallWidth / 2);
-        walls.add(wallback);
-
-        var wallfront = new THREE.Mesh(groundGeo, wallTexture);
-        wallfront.overdraw = true;
-        wallfront.position.set(0, -wallWidth / 2, wallWidth / 2);
-        wallfront.rotation.y = -Math.PI;
-        walls.add(wallfront);
-
-        scene.add(walls)
-        
-        
-          // GROUND
+        // GROUND
 
         var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
         var groundMat = new THREE.MeshPhongMaterial({
@@ -209,7 +162,7 @@
         ground.receiveShadow = true;
 
 
-       /* // LIGHTS
+        // LIGHTS
 
         hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
         hemiLight.color.setHSL(0.6, 1, 0.6);
@@ -242,7 +195,7 @@
         //dirLight.shadowCameraVisible = true;
 
 
-*/
+
         //rendering
 
 
