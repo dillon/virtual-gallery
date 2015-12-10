@@ -50,38 +50,38 @@
       //parse stuff
       Parse.initialize("nFKDmrlJEfyeEjTt4SMBhglHlKrFD0Wv61MAiMpj", "0ugDUNgUmflEHjINRTEMg68SfXX1NDJ9QN9MVd80");
 
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
-      testObject.save({foo: "bar"}, {
-      success: function(object) {
-        $(".success").show();
-      },
-      error: function(model, error) {
-        $(".error").show();
-      }
-    });
+      var TestObject = Parse.Object.extend("TestObject");
+      var testObject = new TestObject();
+      testObject.save({
+        foo: "bar"
+      }, {
+        success: function(object) {
+          $(".success").show();
+        },
+        error: function(model, error) {
+          $(".error").show();
+        }
+      });
 
-//start parse 2 (users)
-var user = new Parse.User();
-user.set("username", "my name");
-user.set("password", "my pass");
-user.set("email", "email@example.com");
-  
-// other fields can be set just like with Parse.Object
-user.set("phone", "650-555-0000");
-  
-user.signUp(null, {
-  success: function(user) {
-    // Hooray! Let them use the app now.
-  },
-  error: function(user, error) {
-    // Show the error message somewhere and let the user try again.
-    alert("Error: " + error.code + " " + error.message);
-  }
-});
+      //start parse 2 (users)
+      var user = new Parse.User();
+      user.set("username", "my name" + random(1000000));
+      user.set("password", "my pass" + random(1000000));
+
+      // other fields can be set just like with Parse.Object
+
+      user.signUp(null, {
+        success: function(user) {
+          // Hooray! Let them use the app now.
+        },
+        error: function(user, error) {
+          // Show the error message somewhere and let the user try again.
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
 
 
-//end parse 2
+      //end parse 2
 
       var dimensions = {
         // What type of news is this? 
@@ -174,8 +174,7 @@ user.signUp(null, {
 
 
 
-
-  // DON'T DELETE / CLICKY ANALYTICS // DON'T DELETE / CLICKY ANALYTICS
+  <!-- Clicky Analytics
   <a title="Google Analytics Alternative" href="http://clicky.com/100901960"><img alt="Google Analytics Alternative" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
   <script src="//static.getclicky.com/js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -184,8 +183,9 @@ user.signUp(null, {
     } catch (e) {}
   </script>
   <noscript>
-    <p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100901960ns.gif" /></p>
   </noscript>
 </body>
+*/
+-->
 
 </html>
