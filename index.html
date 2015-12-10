@@ -134,9 +134,12 @@
                 var mesh = new THREE.Mesh(geometry, material);
                 scene.add(mesh);
         */
-        //box you're in
-        var geometry = new THREE.BoxGeometry(50, 50, 50, 4, 4, 4);
-        geometry.translate(80, 80, 0); // three.js r.72
+
+        
+        
+        //box floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
+        geometry.translate(50, 50, 0); // three.js r.72
 
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
@@ -145,8 +148,7 @@
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
-
-        /*
+/*
                         //another thing idk?
                         var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
                         var material = new THREE.MeshBasicMaterial({
