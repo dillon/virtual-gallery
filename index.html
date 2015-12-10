@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
 
-  <title>three.js webgl - controls - deviceorientation</title>
+  <title>Place</title>
   <meta charset="utf-8">
   <meta name="viewport" content="user-scalable=no, initial-scale=1">
   <style>
@@ -79,7 +80,9 @@
   <div id="container"></div>
 
   <div id="info">
-<script><?php include("visitors.php");?></script>
+    <script>
+      <?php include("visitors.php");?>
+    </script>
   </div>
 
   <script src="js/three.min.js"></script>
@@ -87,100 +90,87 @@
 
   <script>
     (function() {
-      "use strict";
+        "use strict";
+        var dimensions = {
+          window.addEventListener('load', function() {
 
-      var dimensions = {
-        // What type of news is this? 
-        category: 'politics',
-        // Is it a weekday or a weekend?
-        dayType: 'weekday'
-      };
-      // Send the dimensions to Parse along with the 'search' event
+            var container, camera, scene, renderer, controls, geometry, mesh;
 
-      Parse.Analytics.track('read', dimensions)
+            var animate = function() {
 
+              window.requestAnimationFrame(animate);
 
-      //end parse stuff
-      window.addEventListener('load', function() {
+              controls.update();
+              renderer.render(scene, camera);
 
-        var container, camera, scene, renderer, controls, geometry, mesh;
+            };
 
-        var animate = function() {
+            container = document.getElementById('container');
 
-          window.requestAnimationFrame(animate);
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight,  1, 1100);
 
-          controls.update();
-          renderer.render(scene, camera);
+            controls = new THREE.DeviceOrientationControls(camera);
 
-        };
+            scene = new THREE.Scene();
 
-        container = document.getElementById('container');
+            var geometry = new THREE.SphereGeometry(1, 1, 1);
 
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
+            var material = new THREE.MeshBasicMaterial({
+              map: THREE.ImageUtils.loadTexture('images/equi.jpg')
+            });
 
-        controls = new THREE.DeviceOrientationControls(camera);
+            var mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
 
-        scene = new THREE.Scene();
-
-        var geometry = new THREE.SphereGeometry(500, 16, 8);
-        geometry.scale(-1, 1, 1);
-
-        var material = new THREE.MeshBasicMaterial({
-          map: THREE.ImageUtils.loadTexture('images/equi.jpg')
-        });
-
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
-        var material = new THREE.MeshBasicMaterial({
-          color: 0xff00ff,
-          side: THREE.BackSide,
-          wireframe: true
-        });
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
+            var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
+            var material = new THREE.MeshBasicMaterial({
+              color: 0x66FFFF,
+              side: THREE.BackSide,
+              wireframe: true
+            });
+            var mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
 
 
 
-        var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
-        var material = new THREE.MeshBasicMaterial({
-          color: 0x00ffff,
-          side: THREE.BackSide,
-          wireframe: false
-        });
+            var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
+            var material = new THREE.MeshBasicMaterial({
+              color: 0xFFFFFF,
+              side: THREE.BackSide,
+              wireframe: true
+            });
 
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
+            var mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
 
 
 
 
-        renderer = new THREE.WebGLRenderer();
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.domElement.style.position = 'absolute';
-        renderer.domElement.style.top = 0;
-        container.appendChild(renderer.domElement);
+            renderer = new THREE.WebGLRenderer();
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.domElement.style.position = 'absolute';
+            renderer.domElement.style.top = 0;
+            container.appendChild(renderer.domElement);
 
-        window.addEventListener('resize', function() {
+            window.addEventListener('resize', function() {
 
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
+              camera.aspect = window.innerWidth / window.innerHeight;
+              camera.updateProjectionMatrix();
+              renderer.setSize(window.innerWidth, window.innerHeight);
 
-        }, false);
+            }, false);
 
-        animate();
+            animate();
 
-      }, false);
+          }, false);
 
-    })();
+        })();
   </script>
 
 
 
-  <!-- Clicky Analytics
+  Clicky Analytics
   <a title="Google Analytics Alternative" href="http://clicky.com/100901960"><img alt="Google Analytics Alternative" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
   <script src="//static.getclicky.com/js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -190,7 +180,7 @@
   </script>
   <noscript>
   </noscript>
-  -->
+ 
   <footer>
   </footer>
 </body>
