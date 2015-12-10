@@ -35,7 +35,43 @@
 </head>
 
 <body>
+  <script>
+    //parse stuff
+    Parse.initialize("nFKDmrlJEfyeEjTt4SMBhglHlKrFD0Wv61MAiMpj", "0ugDUNgUmflEHjINRTEMg68SfXX1NDJ9QN9MVd80");
 
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+    testObject.save({
+      foo: "bar"
+    }, {
+      success: function(object) {
+        $(".success").show();
+      },
+      error: function(model, error) {
+        $(".error").show();
+      }
+    });
+
+    //start parse 2 (users)
+    var user = new Parse.User();
+    user.set("username", "my name" + random(1000000));
+    user.set("password", "my pass" + random(1000000));
+
+    // other fields can be set just like with Parse.Object
+
+    user.signUp(null, {
+      success: function(user) {
+        // Hooray! Let them use the app now.
+      },
+      error: function(user, error) {
+        // Show the error message somewhere and let the user try again.
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+
+
+    //end parse 2
+  </script>
   <div id="container"></div>
 
   <div id="info">
@@ -80,26 +116,26 @@
         controls = new THREE.DeviceOrientationControls(camera);
 
         scene = new THREE.Scene();
-        
-                var geometry = new THREE.SphereGeometry(500, 16, 8);
-                geometry.scale(-1, 1, 1);
 
-                var material = new THREE.MeshBasicMaterial({
-                  map: THREE.ImageUtils.loadTexture('images/equi.jpg')
-                });
+        var geometry = new THREE.SphereGeometry(500, 16, 8);
+        geometry.scale(-1, 1, 1);
 
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
-               
-                var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
-                var material = new THREE.MeshBasicMaterial({
-                  color: 0xff00ff,
-                  side: THREE.BackSide,
-                  wireframe: true
-                });
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
-         
+        var material = new THREE.MeshBasicMaterial({
+          map: THREE.ImageUtils.loadTexture('images/equi.jpg')
+        });
+
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        var geometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
+        var material = new THREE.MeshBasicMaterial({
+          color: 0xff00ff,
+          side: THREE.BackSide,
+          wireframe: true
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
 
 
         var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
