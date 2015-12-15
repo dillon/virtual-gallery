@@ -151,12 +151,12 @@
         var geometry = new THREE.BoxGeometry(100, 1000, 700);
         geometry.translate(-120, 0, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
-          side: THREE.BackSide,
-
           color: 0xFFFFFF,
           bumpMap: imgTexture2,
           bumpScale: .1,
         });
+        var transformation = new THREE.Matrix4().makeTranslation(0, 0, 180).makeRotationZ(Math.PI / 2);
+        geometry.applyMatrix(transformation);
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
@@ -175,8 +175,6 @@
         var geometry = new THREE.BoxGeometry(700, 1000, 100);
         geometry.translate(0, 0, -190); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
-          side: THREE.BackSide,
-
           color: 0xFFFFFF,
           bumpMap: imgTexture2,
           bumpScale: .1,
