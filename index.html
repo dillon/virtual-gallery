@@ -290,20 +290,26 @@
     var request = new XMLHttpRequest();
     request.open("GET", 'virgin.aac', true);
     request.responseType = "arraybuffer";
-    request.onload = function(e) {
+    var onClick = function() {
 
-      // Create a buffer from the response ArrayBuffer.
-      ctx.decodeAudioData(this.response, function onSuccess(buffer) {
-        sound.buffer = buffer;
+        request.onload = function(e) {
 
-        // Make the sound source use the buffer and start playing it.
-        sound.source.buffer = sound.buffer;
-        sound.source.start(ctx.currentTime);
-      }, function onFailure() {
-        alert("Decoding the audio buffer failed");
-      });
-    };
-    request.send();
+          // Create a buffer from the response ArrayBuffer.
+          ctx.decodeAudioData(this.response, function onSuccess(buffer) {
+              sound.buffer = buffer;
+
+
+              // Make the sound source use the buffer and start playing it.
+              sound.source.buffer = sound.buffer;
+              sound.source.start(ctx.currentTime);
+            },
+            function onFailure() {
+              alert("Decoding the audio buffer failed");
+            });
+        };
+        button.addEventListener('click', mousePressed, false);
+
+        request.send();
   </script>
 
 
