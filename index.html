@@ -124,7 +124,8 @@
 
         //box floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
-        geometry.position.copy(50, 50, 100);
+        geometry.translate(100, 50, 0); // three.js r.72
+
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
           side: THREE.BackSide,
