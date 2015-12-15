@@ -107,8 +107,8 @@
             controls.update();
             if (mesh2r) {
 
-              mesh.rotation.x += 1/32 * delta;
-              mesh.rotation.y += 1/32 * delta;
+              mesh.rotation.x += 1/50;
+              mesh.rotation.y += 1/50;
               
             }
             renderer.render(scene, camera);
@@ -214,8 +214,7 @@
           //sphere3 floating (original parameters were 100,100,100 no translate)
           var geometry = new THREE.BoxGeometry(30, 50, 25)
           geometry.translate(-30, 70, 0); // three.js r.72
-          var material = new THREE.MeshLambertMaterial({
-          });
+          var material = new THREE.MeshPhongMaterial();
           var mesh2r = new THREE.Mesh(geometry, material);
           scene.add(mesh2r);
 
