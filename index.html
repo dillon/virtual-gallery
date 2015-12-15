@@ -83,6 +83,7 @@
 
   <script src="js/three.min.js"></script>
   <script src="js/DeviceOrientationControls.js"></script>
+  <script src="js/ObjectLoader.js"></script>
 
   <script>
     (function() {
@@ -110,20 +111,15 @@
 
 
         // instantiate a loader
-        var loader = new THREE.JSONLoader();
+        var loader = new THREE.ObjectLoader();
 
-        // load a resource
-        loader.load(
-          // resource URL
-          'torus.json',
-          // Function when resource is loaded
-          function(geometry, materials) {
-            var material = new THREE.MeshFaceMaterial(materials);
-            var object = new THREE.Mesh(geometry, material);
-            scene.add(object);
-          }
-        );
-        /*
+        // assuming we loaded a JSON structure from elsewhere
+        var object = loader.parse(scene.json);
+
+        scene.add(object);
+        
+        
+        
         //sphere idk what this does
         var geometry = new THREE.SphereGeometry(100, 100, 1);
 
@@ -132,8 +128,7 @@
         });
 
         var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-        */
+        scene.add(mesh); * /
 
 
 
