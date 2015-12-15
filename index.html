@@ -140,9 +140,11 @@
         var geometry = new THREE.BoxGeometry(100, 1000, 700);
         geometry.translate(120, 0, 0); // three.js r.72
         var material = new THREE.MeshLambertMaterial({
-          color: 0xFFFFFF,
-          bumpMap: ,
-          bumpScale: 12
+          map: imgTexture2,
+          bumpMap: imgTexture2,
+          bumpScale: 1,
+          color: 0x000000,
+          specular: 0xffaa00
 
         });
         var mesh = new THREE.Mesh(geometry, material);
