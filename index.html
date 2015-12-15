@@ -214,8 +214,7 @@
           //sphere3 floating (original parameters were 100,100,100 no translate)
           var geometry = new THREE.BoxGeometry(30, 50, 25)
           geometry.translate(-30, 70, 0); // three.js r.72
-          var material = new THREE.MeshPhongMaterial({
-            map: THREE.ImageUtils.loadTexture('images/refract/chain.png')
+          var material = new THREE.MeshLambertMaterial({
           });
           var mesh2r = new THREE.Mesh(geometry, material);
           scene.add(mesh2r);
