@@ -83,7 +83,7 @@
 
   <script src="js/three.min.js"></script>
   <script src="js/DeviceOrientationControls.js"></script>
-  <script src="js/JSONLoader.js"></script>
+  <script src="js/ObjectLoader.js"></script>
 
   <script>
     (function() {
@@ -101,12 +101,12 @@
 
 
                 // instantiate a loader
-                var loader = new THREE.JSONLoader();
+                var loader = new THREE.ObjectLoader();
 
                 // load a resource
                 loader.load(
                   // resource URL
-                  'torus1.js',
+                  'scene.js',
                   // Function when resource is loaded
                   function(geometry, materials) {
                     var material = new THREE.MeshFaceMaterial(materials);
