@@ -209,10 +209,10 @@
           //pink sphere floating (original parameters were 100,100,100 no translate)
           var geometry = new THREE.SphereGeometry(13, 64, 64)
           geometry.translate(-5, 10, -20); // three.js r.72
-          var material = new THREE.MeshLambertMaterial({
+          var material = new THREE.MeshPhongMaterial({
             color: 0xff0066,
             bumpMap: imgTexture1,
-            bumpScale: 1,
+            bumpScale: 5,
           });
           var mesh = new THREE.Mesh(geometry, material);
           scene.add(mesh);
