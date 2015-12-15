@@ -205,8 +205,6 @@
           geometry.translate(-30, -40, 0); // three.js r.72
           var material = new THREE.MeshPhongMaterial({
             map: THREE.ImageUtils.loadTexture('images/refract/water.gif')
-          wireframe=true;
-            
           });
           var mesh = new THREE.Mesh(geometry, material);
           scene.add(mesh);
