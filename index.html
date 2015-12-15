@@ -138,17 +138,6 @@
 
 
 
-        //box1 floating (original parameters were 100,100,100 no translate)
-        /*var geometry = new THREE.BoxGeometry(100, 1000, 700, 4, 4, 4);
-        geometry.translate(120, 0, 0); // three.js r.72
-
-        var material = new THREE.MeshPhongMaterial({
-          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
-        });
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-*/
 
 
         //sphere1 floating (original parameters were 100,100,100 no translate)
@@ -202,7 +191,7 @@
         // create the video element
         video = document.createElement('video');
         // video.id = 'video';
-        // video.type = ' video/ogg; codecs="theora, vorbis" ';
+        video.type = ' video/mp4; codecs="avc1.42E01E, mp4a.40.2";
         video.src = "virgin.mp4";
         video.load(); // must call after setting/changing source
         video.play();
@@ -235,7 +224,20 @@
         });
         // the geometry on which the movie will be displayed;
         // 		movie image will be scaled to fit these dimensions.
-        var movieGeometry = new THREE.PlaneGeometry(240, 100, 4, 4);
+
+        //box1 floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.BoxGeometry(100, 500, 700, 4, 4, 4);
+        geometry.translate(120, 0, 0); // three.js r.72
+
+        var material = new THREE.Mesh(movieGeometry, movieMaterial);
+        movieScreen.position.set(0, 50, 0);
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+
+      
+      
+       var movieGeometry = new THREE.PlaneGeometry(240, 100, 4, 4);
         var movieScreen = new THREE.Mesh(movieGeometry, movieMaterial);
         movieScreen.position.set(0, 50, 0);
         scene.add(movieScreen);
