@@ -155,8 +155,9 @@
           bumpMap: imgTexture2,
           bumpScale: .1,
         });
-        var transformation = new THREE.Matrix4().makeTranslation(0, 180, 0).makeRotationZ(Math.PI / 2);
+        var transformation = new THREE.Matrix4().makeTranslation(0, 0, 180).makeRotationZ(Math.PI / 2);
         geometry.applyMatrix(transformation);
+        obj.matrixAutoUpdate = false;
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
