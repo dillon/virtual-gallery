@@ -135,9 +135,8 @@
         //box1 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.BoxGeometry(100, 1000, 700, 4, 4, 4);
         geometry.translate(120, 0, 0); // three.js r.72
-
-        var material = new THREE.MeshPhongMaterial({
-          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
+        var material = new THREE.MeshLambertMaterial({
+          color: 0xFFFFFF,
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
@@ -148,12 +147,8 @@
         //sphere1 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(20, 100, 70)
         geometry.translate(-100, 0, -20); // three.js r.72
-
-        var material = new THREE.MeshLambertMaterial({
-          color: 0xFFFFFF,
-
-          //side: THREE.BackSide,
-          wireframe: false //disable to make it walls
+        var material = new THREE.MeshPhongMaterial({
+          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
@@ -161,12 +156,8 @@
         //sphere2 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(20, 100, 70)
         geometry.translate(50, 20, 0); // three.js r.72
-
         var material = new THREE.MeshLambertMaterial({
           color: 0xFFFFFF,
-
-          //side: THREE.BackSide,
-          wireframe: false //disable to make it walls
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
