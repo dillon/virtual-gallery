@@ -108,6 +108,7 @@
             if (mesh2r) {
 
               mesh.rotation.x += 0.001;
+              
             }
             renderer.render(scene, camera);
 
@@ -204,6 +205,8 @@
           geometry.translate(-30, -40, 0); // three.js r.72
           var material = new THREE.MeshPhongMaterial({
             map: THREE.ImageUtils.loadTexture('images/refract/11393147_846006378807087_3539543228612747611_n.jpg')
+          wireframe=true;
+            
           });
           var mesh = new THREE.Mesh(geometry, material);
           scene.add(mesh);
