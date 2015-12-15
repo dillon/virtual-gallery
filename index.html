@@ -149,17 +149,6 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-        //box4 
-        var geometry = new THREE.BoxGeometry(700, 350, 100);
-        geometry.translate(0, 0, -120); // three.js r.72
-        var material = new THREE.MeshPhongMaterial({
-          color: 0xFFFFFF,
-          bumpMap: imgTexture2,
-          bumpScale: .1,
-        });
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
 
         //sphere1 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(20, 100, 70)
