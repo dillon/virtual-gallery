@@ -197,7 +197,7 @@
 
         //sphere3 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(13, 100, 70)
-        geometry.translate(-30, 0, 0); // three.js r.72
+        geometry.translate(-40, -15, 7); // three.js r.72
 
         var path = "images/refract/";
         var format = '.jpg';
@@ -207,7 +207,6 @@
           path + 'pz' + format, path + 'nz' + format
         ];
 
-        var textureCube = THREE.ImageUtils.loadTextureCube(urls, THREE.CubeRefractionMapping);
         var material = new THREE.MeshBasicMaterial({
           color: 0xffffff,
           envMap: textureCube,
