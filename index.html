@@ -204,7 +204,7 @@
         
         
                  //sphere3 floating (original parameters were 100,100,100 no translate)
-        var geometry = new THREE.SphereGeometry(60, 100, 70)
+        var geometry = new THREE.SphereGeometry(30, 100, 70)
         geometry.translate(-30, 50, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           map: THREE.ImageUtils.loadTexture('images/refract/chain.png')
@@ -230,14 +230,14 @@
 
         // LIGHTS
 
-        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, .7);
+        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, .6);
         hemiLight.color.setHSL(0.6, 1, 0.6);
         hemiLight.groundColor.setHSL(0.095, .4, 0.75);
         hemiLight.position.set(0, 15, 0);
         scene.add(hemiLight);
         //
 
-        dirLight = new THREE.DirectionalLight(0xffffff, .5);
+        dirLight = new THREE.DirectionalLight(0xffffff, .9);
         dirLight.position.set(-1, 1.75, 1);
         dirLight.position.multiplyScalar(1);
         scene.add(dirLight);
