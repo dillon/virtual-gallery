@@ -83,13 +83,12 @@
 
   <script src="js/three.min.js"></script>
   <script src="js/DeviceOrientationControls.js"></script>
-  <script src="js/material2.js"></script>
   <script src="js/Material.js"></script>
   <script src="js/MeshNormalMaterial.js"></script>
   <script src="js/MeshBasicMaterial.js"></script>
   <script src="js/MeshPhongMaterial.js"></script>
   <script src="js/MeshLambertMaterial.js"></script>
-
+  <script src="js/DodecahedronGeometry.js"></script>
 
 
   <script>
@@ -201,11 +200,10 @@
         
         
             //shape4 floating (original parameters were 100,100,100 no translate)
-        var geometry = new THREE.IcosahedronGeometry(20)
+        var geometry = new THREE.DodecahedronGeometry(20)
         geometry.translate(-30, 90, -5); // three.js r.72
-        var material = new THREE.MeshPhongMaterial({
-          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
-        });
+        var material = new THREE.MeshLambertMaterial({
+      
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
         
@@ -229,7 +227,7 @@
 
         hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, .7);
         hemiLight.color.setHSL(0.6, 1, 0.6);
-        hemiLight.groundColor.setHSL(0.095, .4, 0.75);
+        hemiLight.groundColor.setHSL(0.3, .4, 0.75);
         hemiLight.position.set(0, 15, 0);
         scene.add(hemiLight);
         //
