@@ -107,7 +107,8 @@
             controls.update();
             if (mesh2r) {
 
-              mesh.rotation.x += 0.001;
+              mesh.rotation.x += 1/32 * delta;
+              mesh.rotation.y += 1/32 * delta;
               
             }
             renderer.render(scene, camera);
