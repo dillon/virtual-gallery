@@ -151,11 +151,8 @@
         var geometry = new THREE.SphereGeometry(20, 100, 70)
         geometry.translate(-100, 0, -20); // three.js r.72
 
-        var material = new THREE.MeshLambertMaterial({
-          color: 0xFFFFFF,
-
-          //side: THREE.BackSide,
-          wireframe: false //disable to make it walls
+        var material = new THREE.MeshPhongMaterial({
+          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
