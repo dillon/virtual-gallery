@@ -88,6 +88,8 @@
   <script src="js/MeshNormalMaterial.js"></script>
   <script src="js/MeshBasicMaterial.js"></script>
   <script src="js/MeshPhongMaterial.js"></script>
+  <script src="js/MeshLambertMaterial.js"></script>
+
 
 
   <script>
@@ -134,7 +136,7 @@
         var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
         geometry.translate(120, 0, 0); // three.js r.72
 
-        var material = new THREE.MeshBasicMaterial({
+        var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
           //side: THREE.BackSide,
           wireframe: false //disable to make it walls
@@ -145,7 +147,7 @@
 
 
 
-        //box3 floating (original parameters were 100,100,100 no translate)
+        //sphere1 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(20, 100, 70)
         geometry.translate(-100, 0, 0); // three.js r.72
 
@@ -157,6 +159,20 @@
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
+
+        //sphere2 floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.SphereGeometry(20, 100, 70)
+        geometry.translate(-80, 20, 0); // three.js r.72
+
+        var material = new THREE.MeshLambertMaterial({
+          color: 0xFFFFFF,
+
+          //side: THREE.BackSide,
+          wireframe: false //disable to make it walls
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
         /*
                //another thing idk?
               var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
