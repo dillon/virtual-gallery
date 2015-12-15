@@ -181,10 +181,10 @@
         scene.add(ground);
         wireframe: true //disable later
 
-        //ground.receiveShadow = true;
+        ground.receiveShadow = true;
 
 
-       /* // LIGHTS
+        // LIGHTS
 
         hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
         hemiLight.color.setHSL(0.6, 1, 0.6);
@@ -197,7 +197,7 @@
         dirLight = new THREE.DirectionalLight(0xffffff, 1);
         dirLight.color.setHSL(0.1, 1, 0.95);
         dirLight.position.set(-1, 1.75, 1);
-        dirLight.position.multiplyScalar(50);
+        dirLight.position.multiplyScalar(10);
         scene.add(dirLight);
 
         dirLight.castShadow = true;
@@ -216,7 +216,7 @@
         dirLight.shadowBias = -0.0001;
         //dirLight.shadowCameraVisible = true;
 
-*/
+
 
         //rendering
 
