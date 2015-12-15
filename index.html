@@ -95,34 +95,34 @@
 
   <script>
     (function() {
-        "use strict";
-        window.addEventListener('load', function() {
+      "use strict";
+      window.addEventListener('load', function() {
 
-            var container, camera, scene, object, renderer, controls, geometry, mesh, mesh2r, dirLight, hemiLight;
+          var container, camera, scene, object, renderer, controls, geometry, mesh, mesh2r, dirLight, hemiLight;
 
-            var animate = function() {
+          var animate = function() {
 
-                window.requestAnimationFrame(animate);
+            window.requestAnimationFrame(animate);
 
-                controls.update();
-                if (mesh2r) {
+            controls.update();
+            if (mesh2r) {
 
-                  mesh.rotation.x += 0.01;
-                  mesh.rotation.y += 0.01;
+              mesh.rotation.x += 0.01;
+              mesh.rotation.y += 0.01;
+            }
+            renderer.render(scene, camera);
 
-                  renderer.render(scene, camera);
+          };
 
-                };
+          container = document.getElementById('container');
 
-                container = document.getElementById('container');
+          camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
 
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
+          controls = new THREE.DeviceOrientationControls(camera);
 
-                controls = new THREE.DeviceOrientationControls(camera);
+          scene = new THREE.Scene();
 
-                scene = new THREE.Scene();
-
-                /*
+          /*
         //sphere idk what this does
         var geometry = new THREE.SphereGeometry(100, 100, 1);
 
@@ -136,163 +136,163 @@
 
 */
 
-                var imgTexture2 = THREE.ImageUtils.loadTexture("images/Spray-Wall-Texture-06.jpg");
-                imgTexture2.wrapS = imgTexture2.wrapT = THREE.RepeatWrapping;
-                imgTexture2.anisotropy = 16;
+          var imgTexture2 = THREE.ImageUtils.loadTexture("images/Spray-Wall-Texture-06.jpg");
+          imgTexture2.wrapS = imgTexture2.wrapT = THREE.RepeatWrapping;
+          imgTexture2.anisotropy = 16;
 
 
 
-                //box1 
-                var geometry = new THREE.BoxGeometry(100, 350, 100);
-                geometry.translate(120, 0, 0); // three.js r.72
-                var material = new THREE.MeshPhongMaterial({
-                  color: 0xFFFFFF,
-                  bumpMap: imgTexture2,
-                  bumpScale: .1,
+          //box1 
+          var geometry = new THREE.BoxGeometry(100, 350, 100);
+          geometry.translate(120, 0, 0); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            color: 0xFFFFFF,
+            bumpMap: imgTexture2,
+            bumpScale: .1,
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+          //box3 
+          var geometry = new THREE.BoxGeometry(119, 119, 130);
+          //geometry.translate(0, 0, 120); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            color: 0xFFFFFF,
+            bumpMap: imgTexture2,
+            bumpScale: .1,
+            side: THREE.BackSide,
+
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+          //box4 
+          var geometry = new THREE.BoxGeometry(700, 350, 100, 4, 4, 4);
+          geometry.translate(0, 0, -120); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            color: 0xFFFFFF,
+            bumpMap: imgTexture2,
+            bumpScale: .1,
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+
+          //sphere1 floating (original parameters were 100,100,100 no translate)
+          var geometry = new THREE.SphereGeometry(20, 100, 70)
+          geometry.translate(-70, 0, -20); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+          //sphere2 floating (original parameters were 100,100,100 no translate)
+          var geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16)
+          geometry.translate(50, 20, 0); // three.js r.72
+          var material = new THREE.MeshLambertMaterial({
+            color: 0xFd2FF88,
+
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          mesh.rotation.x += 0.01;
+          mesh.rotation.y += 0.01;
+
+          scene.add(mesh);
+
+
+
+          //sphere3 floating (original parameters were 100,100,100 no translate)
+          var geometry = new THREE.SphereGeometry(13)
+          geometry.translate(-30, -40, 0); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            map: THREE.ImageUtils.loadTexture('images/refract/words_the_fruit_of_the_summer.png')
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+
+          //sphere3 floating (original parameters were 100,100,100 no translate)
+          var geometry = new THREE.SphereGeometry(100)
+          geometry.translate(-30, 50, 0); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            map: THREE.ImageUtils.loadTexture('images/refract/chain.png')
+          });
+          var mesh2r = new THREE.Mesh(geometry, material);
+          scene.add(mesh2r);
+
+
+          /*
+                 //another thing idk?
+                var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
+                var material = new THREE.MeshBasicMaterial({
+                color: 0xFFFFFF,
+                side: THREE.BackSide,
+                wireframe: true
                 });
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
 
-                //box3 
-                var geometry = new THREE.BoxGeometry(119, 119, 130);
-                //geometry.translate(0, 0, 120); // three.js r.72
-                var material = new THREE.MeshPhongMaterial({
-                  color: 0xFFFFFF,
-                  bumpMap: imgTexture2,
-                  bumpScale: .1,
-                  side: THREE.BackSide,
+              var mesh = new THREE.Mesh(geometry, material);
+              scene.add(mesh);
 
-                });
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
-
-                //box4 
-                var geometry = new THREE.BoxGeometry(700, 350, 100, 4, 4, 4);
-                geometry.translate(0, 0, -120); // three.js r.72
-                var material = new THREE.MeshPhongMaterial({
-                  color: 0xFFFFFF,
-                  bumpMap: imgTexture2,
-                  bumpScale: .1,
-                });
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
+          */
 
 
-                //sphere1 floating (original parameters were 100,100,100 no translate)
-                var geometry = new THREE.SphereGeometry(20, 100, 70)
-                geometry.translate(-70, 0, -20); // three.js r.72
-                var material = new THREE.MeshPhongMaterial({
-                  map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
-                });
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
+          // LIGHTS
 
-                //sphere2 floating (original parameters were 100,100,100 no translate)
-                var geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16)
-                geometry.translate(50, 20, 0); // three.js r.72
-                var material = new THREE.MeshLambertMaterial({
-                  color: 0xFd2FF88,
+          hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, .6);
+          hemiLight.color.setHSL(0.6, 1, 0.6);
+          hemiLight.groundColor.setHSL(0.095, .4, 0.75);
+          hemiLight.position.set(0, 15, 0);
+          scene.add(hemiLight);
+          //
 
-                });
-                var mesh = new THREE.Mesh(geometry, material);
-                mesh.rotation.x += 0.01;
-                mesh.rotation.y += 0.01;
+          dirLight = new THREE.DirectionalLight(0xffffff, 1);
+          dirLight.position.set(-1, 1.75, 1);
+          dirLight.position.multiplyScalar(1);
+          scene.add(dirLight);
 
-                scene.add(mesh);
+          dirLight.castShadow = true;
+
+          dirLight.shadowMapWidth = 2048;
+          dirLight.shadowMapHeight = 2048;
+
+          var d = 50;
+
+          dirLight.shadowCameraLeft = -d;
+          dirLight.shadowCameraRight = d;
+          dirLight.shadowCameraTop = d;
+          dirLight.shadowCameraBottom = -d;
+
+          dirLight.shadowCameraFar = 20;
+          dirLight.shadowBias = -0.0001;
+          //dirLight.shadowCameraVisible = true;
 
 
 
-                //sphere3 floating (original parameters were 100,100,100 no translate)
-                var geometry = new THREE.SphereGeometry(13)
-                geometry.translate(-30, -40, 0); // three.js r.72
-                var material = new THREE.MeshPhongMaterial({
-                  map: THREE.ImageUtils.loadTexture('images/refract/words_the_fruit_of_the_summer.png')
-                });
-                var mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
+          //rendering
 
 
-                //sphere3 floating (original parameters were 100,100,100 no translate)
-                var geometry = new THREE.SphereGeometry(100)
-                geometry.translate(-30, 50, 0); // three.js r.72
-                var material = new THREE.MeshPhongMaterial({
-                  map: THREE.ImageUtils.loadTexture('images/refract/chain.png')
-                });
-                var mesh2r = new THREE.Mesh(geometry, material);
-                scene.add(mesh2r);
+          renderer = new THREE.WebGLRenderer();
+          renderer.setPixelRatio(window.devicePixelRatio);
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.domElement.style.position = 'absolute';
+          renderer.domElement.style.top = 0;
+          container.appendChild(renderer.domElement);
 
+          window.addEventListener('resize', function() {
 
-                /*
-                       //another thing idk?
-                      var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
-                      var material = new THREE.MeshBasicMaterial({
-                      color: 0xFFFFFF,
-                      side: THREE.BackSide,
-                      wireframe: true
-                      });
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
 
-                    var mesh = new THREE.Mesh(geometry, material);
-                    scene.add(mesh);
+          }, false);
 
-                */
+          animate();
 
+        },
+        false);
 
-                // LIGHTS
-
-                hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, .6);
-                hemiLight.color.setHSL(0.6, 1, 0.6);
-                hemiLight.groundColor.setHSL(0.095, .4, 0.75);
-                hemiLight.position.set(0, 15, 0);
-                scene.add(hemiLight);
-                //
-
-                dirLight = new THREE.DirectionalLight(0xffffff, 1);
-                dirLight.position.set(-1, 1.75, 1);
-                dirLight.position.multiplyScalar(1);
-                scene.add(dirLight);
-
-                dirLight.castShadow = true;
-
-                dirLight.shadowMapWidth = 2048;
-                dirLight.shadowMapHeight = 2048;
-
-                var d = 50;
-
-                dirLight.shadowCameraLeft = -d;
-                dirLight.shadowCameraRight = d;
-                dirLight.shadowCameraTop = d;
-                dirLight.shadowCameraBottom = -d;
-
-                dirLight.shadowCameraFar = 20;
-                dirLight.shadowBias = -0.0001;
-                //dirLight.shadowCameraVisible = true;
-
-
-
-                //rendering
-
-
-                renderer = new THREE.WebGLRenderer();
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.domElement.style.position = 'absolute';
-                renderer.domElement.style.top = 0;
-                container.appendChild(renderer.domElement);
-
-                window.addEventListener('resize', function() {
-
-                  camera.aspect = window.innerWidth / window.innerHeight;
-                  camera.updateProjectionMatrix();
-                  renderer.setSize(window.innerWidth, window.innerHeight);
-
-                }, false);
-
-                animate();
-
-              },
-              false);
-
-        })();
+    })();
   </script>
 
 
