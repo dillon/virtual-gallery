@@ -108,21 +108,6 @@
 
         scene = new THREE.Scene();
 
-
-        // instantiate a loader
-        var loader = new THREE.JSONLoader();
-
-        // load a resource
-        loader.load(
-          // resource URL
-          'torus.json',
-          // Function when resource is loaded
-          function(geometry, materials) {
-            var material = new THREE.MeshFaceMaterial(materials);
-            var object = new THREE.Mesh(geometry, material);
-            scene.add(object);
-          }
-        );
         /*
         //sphere idk what this does
         var geometry = new THREE.SphereGeometry(100, 100, 1);
@@ -139,8 +124,7 @@
 
         //box floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
-        geometry.translate(50, 50, 0); // three.js r.72
-
+        geometry.position.copy(50, 50, 100);
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
           side: THREE.BackSide,
