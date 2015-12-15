@@ -194,7 +194,7 @@
         
         
          //sphere3 floating (original parameters were 100,100,100 no translate)
-        var geometry = new THREE.SphereGeometry(13, 4, 70, 4,)
+        var geometry = new THREE.SphereGeometry(13)
         geometry.translate(-30, -40, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           map: THREE.ImageUtils.loadTexture('images/refract/words_the_fruit_of_the_summer.png')
@@ -237,7 +237,7 @@
         scene.add(hemiLight);
         //
 
-        dirLight = new THREE.DirectionalLight(0xffffff, .9);
+        dirLight = new THREE.DirectionalLight(0xffffff, 1);
         dirLight.position.set(-1, 1.75, 1);
         dirLight.position.multiplyScalar(1);
         scene.add(dirLight);
