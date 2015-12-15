@@ -200,12 +200,21 @@
           scene.add(mesh);
 
 
+          //addbumpmap again
+          var imgTexture1 = THREE.ImageUtils.loadTexture("images/refract/12074552_407170449484030_2259851214600421805_n.jpg");
+          imgTexture1.wrapS = imgTexture2.wrapT = THREE.RepeatWrapping;
+          imgTexture1.anisotropy = 16;
+
 
           //pink sphere floating (original parameters were 100,100,100 no translate)
           var geometry = new THREE.SphereGeometry(13, 64, 64)
           geometry.translate(5, 10, 20); // three.js r.72
-          var material = new THREE.MeshLambertMaterial({color: 0xff0066
-});
+          var material = new THREE.MeshLambertMaterial({
+            color: 0xff0066
+            bumpMap: imgTexture1,
+            bumpScale: 5,
+
+          });
           var mesh = new THREE.Mesh(geometry, material);
           scene.add(mesh);
 
@@ -214,7 +223,7 @@
           var geometry = new THREE.SphereGeometry(50, 64, 64)
           geometry.translate(0, 10, 35); // three.js r.72
           var material = new THREE.MeshLambertMaterial({
-color: 0x0588888
+            color: 0x0588888
           });
           var mesh = new THREE.Mesh(geometry, material);
           scene.add(mesh);
