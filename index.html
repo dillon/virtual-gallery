@@ -297,7 +297,7 @@
 
     // Load a sound file using an ArrayBuffer XMLHttpRequest.
     var request = new XMLHttpRequest();
-    request.open("/media/virgin.mp3", soundFileName, true);
+    request.open("GET", 'virgin.mp3', true);
     request.responseType = "arraybuffer";
     request.onload = function(e) {
 
