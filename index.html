@@ -135,6 +135,18 @@
         imgTexture2.anisotropy = 16;
 
 
+
+        //box1 
+        var geometry = new THREE.BoxGeometry(100, 350, 100);
+        geometry.translate(120, 0, 0); // three.js r.72
+        var material = new THREE.MeshPhongMaterial({
+          color: 0xFFFFFF,
+          bumpMap: imgTexture2,
+          bumpScale: .1,
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
         //box3 
         var geometry = new THREE.BoxGeometry(119, 119, 130);
         //geometry.translate(0, 0, 120); // three.js r.72
@@ -142,12 +154,22 @@
           color: 0xFFFFFF,
           bumpMap: imgTexture2,
           bumpScale: .1,
-        
+          side: THREE.BackSide,
+
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-   
+        //box4 
+        var geometry = new THREE.BoxGeometry(700, 350, 100, 4, 4, 4);
+        geometry.translate(0, 0, -120); // three.js r.72
+        var material = new THREE.MeshPhongMaterial({
+          color: 0xFFFFFF,
+          bumpMap: imgTexture2,
+          bumpScale: .1,
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
 
         //sphere1 floating (original parameters were 100,100,100 no translate)
@@ -181,24 +203,6 @@
             scene.add(mesh);
 
         */
-
-
-        // GROUND
-
-        var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
-        var groundMat = new THREE.MeshPhongMaterial({
-          color: 0xffffff,
-          specular: 0x050505
-        });
-        groundMat.color.setHSL(0.095, 1, 0.75);
-
-        var ground = new THREE.Mesh(groundGeo, groundMat);
-        ground.rotation.x = -Math.PI / 2;
-        ground.position.y = -33;
-        scene.add(ground);
-        wireframe: false //disable later
-
-        ground.receiveShadow = true;
 
 
         // LIGHTS
