@@ -112,9 +112,9 @@
 
         // instantiate a loader
         var loader = new THREE.ObjectLoader();
-
+        loader.load(scene.js)
         // assuming we loaded a JSON structure from elsewhere
-        var object = loader.parse(scene.json);
+        var object = loader.parse( scene );
 
         scene.add(object);
         
