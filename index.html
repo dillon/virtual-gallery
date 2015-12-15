@@ -189,33 +189,17 @@
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
-
-
-
-
-
-
-        //sphere3 floating (original parameters were 100,100,100 no translate)
+        
+         //sphere3 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(13, 100, 70)
-        geometry.translate(-40, -15, 7); // three.js r.72
-
-        var path = "images/refract/";
-        var format = '.jpg';
-        var urls = [
-          path + 'px' + format, path + 'nx' + format,
-          path + 'py' + format, path + 'ny' + format,
-          path + 'pz' + format, path + 'nz' + format
-        ];
-
-        var material = new THREE.MeshBasicMaterial({
-          color: 0xffffff,
-          envMap: textureCube,
-          refractionRatio: 0.95
+        geometry.translate(-30, 0, 0); // three.js r.72
+        var material = new THREE.MeshPhongMaterial({
+          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
-
-
+        
+        
 
         /*
                //another thing idk?
