@@ -130,14 +130,14 @@
 
 */
 
-        var imgTexture2 = THREE.ImageUtils.loadTexture("Spray-Wall-Texture-06");
+        var imgTexture2 = THREE.ImageUtils.loadTexture("images/Spray-Wall-Texture-06.jpg");
         imgTexture2.wrapS = imgTexture2.wrapT = THREE.RepeatWrapping;
         imgTexture2.anisotropy = 16;
 
 
 
         //box1 
-        var geometry = new THREE.BoxGeometry(350, 350, 100);
+        var geometry = new THREE.BoxGeometry(100, 350, 100);
         geometry.translate(120, 0, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -148,7 +148,7 @@
         scene.add(mesh);
 
         //box2 
-        var geometry = new THREE.BoxGeometry(350, 350, 350);
+        var geometry = new THREE.BoxGeometry(100, 350, 100);
         geometry.translate(-120, 0, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -159,7 +159,7 @@
         scene.add(mesh);
 
         //box3 
-        var geometry = new THREE.BoxGeometry(350, 350, 350);
+        var geometry = new THREE.BoxGeometry(700, 350, 100);
         geometry.translate(0, 0, 120); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -170,7 +170,7 @@
         scene.add(mesh);
 
         //box4 
-        var geometry = new THREE.BoxGeometry(350, 350, 350);
+        var geometry = new THREE.BoxGeometry(700, 350, 100);
         geometry.translate(0, 0, -120); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
