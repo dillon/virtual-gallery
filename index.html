@@ -129,7 +129,7 @@
         var material = new THREE.MeshBasicMaterial({
           color: 0xFFFFFF,
           side: THREE.BackSide,
-          wireframe: true //disable to make it walls
+          wireframe: false //disable to make it walls
         });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
