@@ -98,18 +98,12 @@
       window.addEventListener('load', function() {
 
         var container, camera, scene, object, renderer, controls, geometry, mesh, dirLight, hemiLight;
-        var video, videoImage, videoImageContext, videoTexture;
 
         var animate = function() {
 
           window.requestAnimationFrame(animate);
 
           controls.update();
-          if (video.readyState === video.HAVE_ENOUGH_DATA) {
-            videoImageContext.drawImage(video, 0, 0);
-            if (videoTexture)
-              videoTexture.needsUpdate = true;
-          }
           renderer.render(scene, camera);
 
         };
@@ -136,6 +130,17 @@
 
 */
 
+
+
+        //box1 floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.BoxGeometry(100, 1000, 700, 4, 4, 4);
+        geometry.translate(120, 0, 0); // three.js r.72
+
+        var material = new THREE.MeshPhongMaterial({
+          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
 
 
@@ -179,66 +184,6 @@
             scene.add(mesh);
 
         */
-
-
-
-
-
-        ///////////
-        // VIDEO //
-        ///////////
-
-        // create the video element
-        video = document.createElement('video');
-        // video.id = 'video';
-        video.type = ' video/mp4';
-        video.src = "virgin.mp4";
-        video.load(); // must call after setting/changing source
-        video.play();
-
-        // alternative method -- 
-        // create DIV in HTML:
-        // <video id="myVideo" autoplay style="display:none">
-        //		<source src="videos/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'>
-        // </video>
-        // and set JS variable:
-        // video = document.getElementById( 'myVideo' );
-
-        videoImage = document.createElement('canvas');
-        videoImage.width = 480;
-        videoImage.height = 204;
-
-        videoImageContext = videoImage.getContext('2d');
-        // background color if no video present
-        videoImageContext.fillStyle = '#000000';
-        videoImageContext.fillRect(0, 0, videoImage.width, videoImage.height);
-
-        videoTexture = new THREE.Texture(videoImage);
-        videoTexture.minFilter = THREE.LinearFilter;
-        videoTexture.magFilter = THREE.LinearFilter;
-
-        var movieMaterial = new THREE.MeshBasicMaterial({
-          map: videoTexture,
-          overdraw: true,
-          side: THREE.DoubleSide
-        });
-        // the geometry on which the movie will be displayed;
-        // 		movie image will be scaled to fit these dimensions.
-
-        //box1 floating (original parameters were 100,100,100 no translate)
-        var geometry = new THREE.BoxGeometry(100, 500, 700, 4, 4, 4);
-        geometry.translate(120, 0, 0); // three.js r.72
-
-        var material = new THREE.Mesh(movieGeometry, movieMaterial);
-        movieScreen.position.set(0, 50, 0);
-        var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-
-      
-
-
-
 
 
         // GROUND
@@ -303,9 +248,7 @@
         renderer.domElement.style.top = 0;
         container.appendChild(renderer.domElement);
 
-
         window.addEventListener('resize', function() {
-
 
           camera.aspect = window.innerWidth / window.innerHeight;
           camera.updateProjectionMatrix();
@@ -319,7 +262,58 @@
 
     })();
   </script>
+  <script>
+    // Detect if the audio context is supported.
+    window.AudioContext = (
+      window.AudioContext ||
+      window.webkitAudioContext ||
+      null
+    );
 
+    if (!AudioContext) {
+      throw new Error("AudioContext not supported!");
+    }
+
+    // Create a new audio context.
+    var ctx = new AudioContext();
+
+    // Create a AudioGainNode to control the main volume.
+    var mainVolume = ctx.createGain();
+    // Connect the main volume node to the context destination.
+    mainVolume.connect(ctx.destination);
+
+    // Create an object with a sound source and a volume control.
+    var sound = {};
+    sound.source = ctx.createBufferSource();
+    sound.volume = ctx.createGain();
+
+    // Connect the sound source to the volume control.
+    sound.source.connect(sound.volume);
+    // Hook up the sound volume control to the main volume.
+    sound.volume.connect(mainVolume);
+
+    // Make the sound source loop.
+    sound.source.loop = true;
+
+    // Load a sound file using an ArrayBuffer XMLHttpRequest.
+    var request = new XMLHttpRequest();
+    request.open("/media/virgin.mp3", soundFileName, true);
+    request.responseType = "arraybuffer";
+    request.onload = function(e) {
+
+      // Create a buffer from the response ArrayBuffer.
+      ctx.decodeAudioData(this.response, function onSuccess(buffer) {
+        sound.buffer = buffer;
+
+        // Make the sound source use the buffer and start playing it.
+        sound.source.buffer = sound.buffer;
+        sound.source.start(ctx.currentTime);
+      }, function onFailure() {
+        alert("Decoding the audio buffer failed");
+      });
+    };
+    request.send();
+  </script>
 
 
   Clicky Analytics
