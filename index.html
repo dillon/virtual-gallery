@@ -102,19 +102,11 @@
 
                 // instantiate a loader
                 var loader = new THREE.ObjectLoader();
+                loader.load(scene.js)
+                // assuming we loaded a JSON structure from elsewhere
+                var object = loader.parse( scene );
 
-                // load a resource
-                loader.load(
-                  // resource URL
-                  'scene.json',
-                  // Function when resource is loaded
-                  function(geometry, materials) {
-                    var material = new THREE.MeshFaceMaterial(materials);
-                    var object = new THREE.Mesh(geometry, material);
-                    scene.add(object);
-                  }
-                );
-
+                scene.add(object);
 
                 //rendering
 
