@@ -133,7 +133,7 @@
 
 
         //box1 floating (original parameters were 100,100,100 no translate)
-        var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
+        var geometry = new THREE.BoxGeometry(1000, 100, 70, 4, 4, 4);
         geometry.translate(120, 0, 0); // three.js r.72
 
         var material = new THREE.MeshPhongMaterial({
@@ -162,7 +162,7 @@
 
         //sphere2 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(20, 100, 70)
-        geometry.translate(-80, 20, 0); // three.js r.72
+        geometry.translate(50, 20, 0); // three.js r.72
 
         var material = new THREE.MeshLambertMaterial({
           color: 0xFFFFFF,
