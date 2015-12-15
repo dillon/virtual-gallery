@@ -200,6 +200,15 @@
         scene.add(mesh);
         
         
+            //shape4 floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.IcosahedronGeometry(20)
+        geometry.translate(-30, 90, -5); // three.js r.72
+        var material = new THREE.MeshPhongMaterial({
+          map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+        
 
         /*
                //another thing idk?
