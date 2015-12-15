@@ -151,6 +151,8 @@
         var geometry = new THREE.BoxGeometry(100, 1000, 700);
         geometry.translate(-120, 0, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
+          side: THREE.BackSide,
+
           color: 0xFFFFFF,
           bumpMap: imgTexture2,
           bumpScale: .1,
@@ -173,6 +175,8 @@
         var geometry = new THREE.BoxGeometry(700, 1000, 100);
         geometry.translate(0, 0, -190); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
+          side: THREE.BackSide,
+
           color: 0xFFFFFF,
           bumpMap: imgTexture2,
           bumpScale: .1,
@@ -213,13 +217,13 @@
 
         */
 
-//Ceiling
+        //Ceiling
         var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
         var groundMat = new THREE.MeshPhongMaterial({
           color: 0xffffff,
           specular: 0x050505
         });
-        groundMat.color.setHSL(0.095, 500, 0.75);
+        groundMat.color.setHSL(0.095, 350, 0.75);
 
         var ground = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
