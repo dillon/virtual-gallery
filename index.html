@@ -132,7 +132,7 @@
 
 
 
-        //box1 floating (original parameters were 100,100,100 no translate)
+        //box1 
         var geometry = new THREE.BoxGeometry(100, 1000, 700, 4, 4, 4);
         geometry.translate(120, 0, 0); // three.js r.72
         var material = new THREE.MeshLambertMaterial({
@@ -141,12 +141,37 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
+        //box2 
+        var geometry = new THREE.BoxGeometry(100, 1000, 700, 4, 4, 4);
+        geometry.translate(-120, 0, 0); // three.js r.72
+        var material = new THREE.MeshLambertMaterial({
+          color: 0xFFFFFF,
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
+        //box3 
+        var geometry = new THREE.BoxGeometry(700, 1000, 100, 4, 4, 4);
+        geometry.translate(0, 0, 120); // three.js r.72
+        var material = new THREE.MeshLambertMaterial({
+          color: 0xFFFFFF,
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        //box4 
+        var geometry = new THREE.BoxGeometry(700, 1000, 100, 4, 4, 4);
+        geometry.translate(0, 0, -120); // three.js r.72
+        var material = new THREE.MeshLambertMaterial({
+          color: 0xFFFFFF,
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
 
         //sphere1 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.SphereGeometry(20, 100, 70)
-        geometry.translate(-100, 0, -20); // three.js r.72
+        geometry.translate(-70, 0, -20); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           map: THREE.ImageUtils.loadTexture('images/Spray-Wall-Texture-06.jpg')
         });
@@ -253,64 +278,7 @@
 
     })();
   </script>
-  <script>
-    // Detect if the audio context is supported.
-    window.AudioContext = (
-      window.AudioContext ||
-      window.webkitAudioContext ||
-      null
-    );
 
-    if (!AudioContext) {
-      throw new Error("AudioContext not supported!");
-    }
-
-    // Create a new audio context.
-    var ctx = new AudioContext();
-
-    // Create a AudioGainNode to control the main volume.
-    var mainVolume = ctx.createGain();
-    // Connect the main volume node to the context destination.
-    mainVolume.connect(ctx.destination);
-
-    // Create an object with a sound source and a volume control.
-    var sound = {};
-    sound.source = ctx.createBufferSource();
-    sound.volume = ctx.createGain();
-
-    // Connect the sound source to the volume control.
-    sound.source.connect(sound.volume);
-    // Hook up the sound volume control to the main volume.
-    sound.volume.connect(mainVolume);
-
-    // Make the sound source loop.
-    sound.source.loop = true;
-
-    // Load a sound file using an ArrayBuffer XMLHttpRequest.
-    var request = new XMLHttpRequest();
-    request.open("GET", 'virgin.aac', true);
-    request.responseType = "arraybuffer";
-    var onClick = function() {
-
-        request.onload = function(e) {
-
-          // Create a buffer from the response ArrayBuffer.
-          ctx.decodeAudioData(this.response, function onSuccess(buffer) {
-              sound.buffer = buffer;
-
-
-              // Make the sound source use the buffer and start playing it.
-              sound.source.buffer = sound.buffer;
-              sound.source.start(ctx.currentTime);
-            },
-            function onFailure() {
-              alert("Decoding the audio buffer failed");
-            });
-        };
-        button.addEventListener('click', mousePressed, false);
-
-        request.send();
-  </script>
 
 
   Clicky Analytics
