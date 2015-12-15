@@ -107,8 +107,8 @@
             controls.update();
             if (mesh2r) {
 
-              mesh.rotation.x += 1 / 50;
-              mesh.rotation.y += 1 / 50;
+              mesh.rotation.x += .0005;
+              mesh.rotation.y += .0005;
 
             }
             renderer.render(scene, camera);
@@ -236,6 +236,16 @@
           });
           var mesh2r = new THREE.Mesh(geometry, material);
           scene.add(mesh2r);
+          
+          
+          //sphere3 floating (original parameters were 100,100,100 no translate)
+          var geometry = new THREE.BoxGeometry(30, 0, 10)
+          geometry.translate(-30, 70, 0); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+            map: THREE.ImageUtils.loadTexture('images/refract/IMG_43661.jpg')
+          });
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mseh);
 
 
           /*
