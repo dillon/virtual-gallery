@@ -208,7 +208,7 @@
         // LIGHTS
 
         hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
-        hemiLight.color.setHSL(0.6, 1, 0.6);
+        hemiLight.color.setHSL(0, 55, 255);
         hemiLight.groundColor.setHSL(0.095, 1, 0.75);
         hemiLight.position.set(0, 100, 0);
         scene.add(hemiLight);
@@ -221,8 +221,8 @@
 
         dirLight.castShadow = true;
 
-        dirLight.shadowMapWidth = 100;
-        dirLight.shadowMapHeight = 100;
+        dirLight.shadowMapWidth = 2048;
+        dirLight.shadowMapHeight = 2048;
 
         var d = 50;
 
