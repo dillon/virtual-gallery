@@ -137,7 +137,7 @@
 
 
         //box1 
-        var geometry = new THREE.BoxGeometry(100, 300, 300);
+        var geometry = new THREE.BoxGeometry(100, 350, 300);
         geometry.translate(120, 0, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -148,7 +148,7 @@
         scene.add(mesh);
 
         //box2 
-        var geometry = new THREE.BoxGeometry(100, 1000, 700);
+        var geometry = new THREE.BoxGeometry(100, 350, 700);
         geometry.translate(-120, 0, 0); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -159,7 +159,7 @@
         scene.add(mesh);
 
         //box3 
-        var geometry = new THREE.BoxGeometry(700, 1000, 100);
+        var geometry = new THREE.BoxGeometry(700, 350, 100);
         geometry.translate(0, 0, 120); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -170,7 +170,7 @@
         scene.add(mesh);
 
         //box4 
-        var geometry = new THREE.BoxGeometry(700, 1000, 100);
+        var geometry = new THREE.BoxGeometry(700, 350, 100);
         geometry.translate(0, 0, -120); // three.js r.72
         var material = new THREE.MeshPhongMaterial({
           color: 0xFFFFFF,
@@ -219,7 +219,7 @@
           color: 0xffffff,
           specular: 0x050505
         });
-        groundMat.color.setHSL(0.095, 350, 0.75);
+        groundMat.color.setHSL(0.095, 500, 0.75);
 
         var ground = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
