@@ -190,6 +190,34 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
+
+
+
+
+
+        //sphere3 floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.SphereGeometry(13, 100, 70)
+        geometry.translate(-30, 0, 0); // three.js r.72
+
+        var path = "images/refract/";
+        var format = '.jpg';
+        var urls = [
+          path + 'px' + format, path + 'nx' + format,
+          path + 'py' + format, path + 'ny' + format,
+          path + 'pz' + format, path + 'nz' + format
+        ];
+
+        var textureCube = THREE.ImageUtils.loadTextureCube(urls, THREE.CubeRefractionMapping);
+        var material = new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          envMap: textureCube,
+          refractionRatio: 0.95
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+
+
         /*
                //another thing idk?
               var geometry = new THREE.SphereGeometry(100, 100, 100, 2, 2, 42);
@@ -207,12 +235,35 @@
 
         // LIGHTS
 
-       
-				var ambient = new THREE.AmbientLight( 0xffffff );
-				scene.add( ambient );
+        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, .7);
+        hemiLight.color.setHSL(0.6, 1, 0.6);
+        hemiLight.groundColor.setHSL(0.095, .4, 0.75);
+        hemiLight.position.set(0, 15, 0);
+        scene.add(hemiLight);
+        //
 
-				pointLight = new THREE.PointLight( 0xffffff, 2 );
-				scene.add( pointLight );
+        dirLight = new THREE.DirectionalLight(0xffffff, .5);
+        dirLight.position.set(-1, 1.75, 1);
+        dirLight.position.multiplyScalar(1);
+        scene.add(dirLight);
+
+        dirLight.castShadow = true;
+
+        dirLight.shadowMapWidth = 2048;
+        dirLight.shadowMapHeight = 2048;
+
+        var d = 50;
+
+        dirLight.shadowCameraLeft = -d;
+        dirLight.shadowCameraRight = d;
+        dirLight.shadowCameraTop = d;
+        dirLight.shadowCameraBottom = -d;
+
+        dirLight.shadowCameraFar = 20;
+        dirLight.shadowBias = -0.0001;
+        //dirLight.shadowCameraVisible = true;
+
+
 
         //rendering
 
