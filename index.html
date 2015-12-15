@@ -130,7 +130,7 @@
 
 
 
-        //box floating (original parameters were 100,100,100 no translate)
+        //box1 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
         geometry.translate(100, 0, 0); // three.js r.72
 
@@ -142,10 +142,24 @@
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-        //another box
-        //box floating (original parameters were 100,100,100 no translate)
+
+        //box2 floating (original parameters were 100,100,100 no translate)
+        var geometry = new THREE.Sphere(5, 32, 32);
+        geometry.translate(50, 0, 0); // three.js r.72
+
+        var material = new THREE.MeshBasicMaterial({
+          color: 0xFFFFFF,
+          //side: THREE.BackSide,
+          wireframe: false //disable to make it walls
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+
+
+        //box3 floating (original parameters were 100,100,100 no translate)
         var geometry = new THREE.BoxGeometry(100, 100, 70, 4, 4, 4);
-        geometry.translate(-500, 0, 0); // three.js r.72
+        geometry.translate(-5, 0, 0); // three.js r.72
 
         var material = new THREE.MeshNormalMaterial({
           color: 0xFFFFFF,
