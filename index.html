@@ -203,8 +203,18 @@
 
           //sphere3 floating (original parameters were 100,100,100 no translate)
           var geometry = new THREE.SphereGeometry(13, 64, 64)
-          geometry.translate(-30, -40, 0); // three.js r.72
+          geometry.translate(-30, -10, 0); // three.js r.72
           var material = new THREE.MeshPhongMaterial();
+          var mesh = new THREE.Mesh(geometry, material);
+          scene.add(mesh);
+
+
+          //sphere2 floating (original parameters were 100,100,100 no translate)
+          var geometry = new THREE.SphereGeometry(50, 64, 64)
+          geometry.translate(20, 0, 0); // three.js r.72
+          var material = new THREE.MeshPhongMaterial({
+color: 0x0588888
+          });
           var mesh = new THREE.Mesh(geometry, material);
           scene.add(mesh);
 
